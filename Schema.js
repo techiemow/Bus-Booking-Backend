@@ -24,6 +24,14 @@ const RegistrationSchema = new schema({
 
 
 const BookingSchema = new schema({
+    busid:{
+        type: Number,
+        required: true
+    },
+    username:{
+        type: String,
+        required: true
+    },
     passengerName: {
         type: Array,
         required: true
@@ -51,7 +59,18 @@ const BookingSchema = new schema({
     totalPrice: {
         type: Number,
         required: true
+    },
+    date: {
+        type: Date,
+        required: true // Ensure date is required
+      },
+
+      payment : { type : Boolean , default: false },
+      razorpayOrderId: { // Add this field if storing Razorpay orderId
+        type: String // Ensure this matches the format from Razorpay
     }
+
+    
 });
 const BookingModel = mongoose.model("Bookings", BookingSchema);
 
